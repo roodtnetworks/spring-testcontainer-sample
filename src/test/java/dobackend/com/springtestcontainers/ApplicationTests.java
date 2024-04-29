@@ -1,4 +1,4 @@
-package roodt.net.springtestcontainers;
+package dobackend.com.springtestcontainers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

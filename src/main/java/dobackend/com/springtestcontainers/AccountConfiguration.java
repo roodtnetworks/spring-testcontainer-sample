@@ -1,4 +1,4 @@
-package roodt.net.springtestcontainers;
+package dobackend.com.springtestcontainers;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

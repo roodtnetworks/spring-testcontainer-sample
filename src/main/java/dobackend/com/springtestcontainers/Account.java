@@ -1,4 +1,4 @@
-package roodt.net.springtestcontainers;
+package dobackend.com.springtestcontainers;
 
 import java.util.UUID;
 

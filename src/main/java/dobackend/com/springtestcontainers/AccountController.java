@@ -1,4 +1,4 @@
-package roodt.net.springtestcontainers;
+package dobackend.com.springtestcontainers;
 
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.slf4j.Logger;
@@ -54,7 +54,7 @@ public class AccountController {
     public ResponseEntity<Void> createAccount(@RequestBody Account account) {
         accountRepository.create(new Account(account.accountId(), account.name()));
         // Do some HATEOAS here. The repository is throwing a ResponseStatus aware exception if a conflict exists
-        // Conflict exception handled by roodt.net.springtestcontainers.AccountController.handleAlreadyExists
+        // Conflict exception handled by dobackend.com.springtestcontainers.AccountController.handleAlreadyExists
         return ResponseEntity.created(URI.create("/accounts/" + account.accountId().toString())).build();
     }
 

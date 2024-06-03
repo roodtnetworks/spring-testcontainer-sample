@@ -1,4 +1,4 @@
-package dobackend.com.springtestcontainers;
+package net.roodt.springtestcontainers;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;

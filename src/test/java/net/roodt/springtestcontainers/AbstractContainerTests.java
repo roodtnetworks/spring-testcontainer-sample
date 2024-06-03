@@ -1,4 +1,4 @@
-package dobackend.com.springtestcontainers;
+package net.roodt.springtestcontainers;
 
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.testcontainers.containers.PostgreSQLContainer;

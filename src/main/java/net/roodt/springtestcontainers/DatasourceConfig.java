@@ -1,4 +1,4 @@
-package dobackend.com.springtestcontainers;
+package net.roodt.springtestcontainers;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "spring.datasource")

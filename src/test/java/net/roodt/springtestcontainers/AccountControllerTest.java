@@ -1,4 +1,4 @@
-package dobackend.com.springtestcontainers;
+package net.roodt.springtestcontainers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jetbrains.annotations.NotNull;

@@ -1,4 +1,4 @@
-package dobackend.com.springtestcontainers;
+package net.roodt.springtestcontainers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

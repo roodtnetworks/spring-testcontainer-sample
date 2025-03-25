@@ -34,6 +34,22 @@ public class AccountController {
     @GetMapping("/{id}")
     public ResponseEntity<Account> account(@PathVariable("id") UUID accountId) {
         // This is a straight forward use of optional to inline an if/else type block
+
+        return Optional.ofNullable(accountRepository.findByAccountId(accountId))
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    private ResponseEntity<Account> getAccountImperative(UUID accountId) {
+        Account account = accountRepository.findByAccountId(accountId);
+        if(account == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(account);
+        }
+    }
+
+    private ResponseEntity<Account> getAccountDeclarative(UUID accountId) {
         return Optional.ofNullable(accountRepository.findByAccountId(accountId))
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());

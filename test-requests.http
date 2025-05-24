@@ -17,6 +17,9 @@ Content-Type: application/json
 }
 
 ###
+GET http://localhost:8080/accounts/75366564-041c-45b9-bade-1fe4801e484d
+
+###
 GET http://localhost:8080/accounts
 
 ###

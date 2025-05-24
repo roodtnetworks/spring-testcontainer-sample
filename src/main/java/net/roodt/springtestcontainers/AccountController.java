@@ -40,6 +40,7 @@ public class AccountController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // Do it like in the early naughties
     private ResponseEntity<Account> getAccountImperative(UUID accountId) {
         Account account = accountRepository.findByAccountId(accountId);
         if(account == null) {
@@ -49,16 +50,10 @@ public class AccountController {
         }
     }
 
-    private ResponseEntity<Account> getAccountDeclarative(UUID accountId) {
-        return Optional.ofNullable(accountRepository.findByAccountId(accountId))
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
+    // Trying to be less verbose, potentially at the expense of readability.
+    // Could achieve the same with an if/else based on whether the list has elements or not.
     @GetMapping
     public ResponseEntity<List<Account>> accounts() {
-        // trying to be less verbose, potentially at the expense of readability
-        // could achieve the same with an if/else based on whether the list has elements or not.
         return Optional.ofNullable(accountRepository.findAll())
                 .filter(not(List::isEmpty))
 //                .filter((list) -> list.size() > 0) // arguably better - no need to create the not predicate.
@@ -66,11 +61,11 @@ public class AccountController {
                 .orElseGet(ResponseEntity.notFound()::build);
     }
 
+    // Do some HATEOAS here. The repository is throwing a "ResponseStatus aware" exception if a conflict exists
+    // Conflict exception handled by springtestcontainers.roodt.net.AccountController.handleAlreadyExists
     @PostMapping
     public ResponseEntity<Void> createAccount(@RequestBody Account account) {
         accountRepository.create(new Account(account.accountId(), account.name()));
-        // Do some HATEOAS here. The repository is throwing a ResponseStatus aware exception if a conflict exists
-        // Conflict exception handled by springtestcontainers.roodt.net.AccountController.handleAlreadyExists
         return ResponseEntity.created(URI.create("/accounts/" + account.accountId().toString())).build();
     }
 
@@ -94,17 +89,14 @@ public class AccountController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler({IllegalArgumentException.class, EmptyResultDataAccessException.class, InvalidFormatException.class})
     public void handleNotFound(Exception ex) {
-        logger.error("Oh dear, we tried but couldn't find your data", ex);
+        logger.error("Data not found", ex);
         // return empty 404
     }
 
-    /**
-     * Maps DataIntegrityViolationException to a 409 Conflict HTTP status code.
-     */
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler({ DataIntegrityViolationException.class })
     public void handleAlreadyExists(Exception ex) {
-        logger.error("Oh dear, the data already exists", ex);
+        logger.error("Data already exists", ex);
         // return empty 409
     }
 }

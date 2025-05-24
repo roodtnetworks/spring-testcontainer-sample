@@ -1,0 +1,24 @@
+###
+POST http://localhost:8080/accounts
+Content-Type: application/json
+
+{
+  "accountId": "75366564-041c-45b9-bade-1fe4801e484d",
+  "name": "Christina Rose"
+}
+
+###
+PUT http://localhost:8080/accounts
+Content-Type: application/json
+
+{
+  "accountId": "75366564-041c-45b9-bade-1fe4801e484d",
+  "name": "Chrissie Rose"
+}
+
+###
+GET http://localhost:8080/accounts
+
+###
+DELETE http://localhost:8080/accounts/75366564-041c-45b9-bade-1fe4801e484d
+

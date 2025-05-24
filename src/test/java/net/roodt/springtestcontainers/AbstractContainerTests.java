@@ -9,7 +9,8 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 public abstract class AbstractContainerTests {
     @Container
     // This should negate the need for dynamic property source, but doesn't seem
-    // to work if you have a datasource bean configured in your code. To fix Using a profile to exclude main datasource
+    // to work if you have a datasource bean configured in your code. I have fixed this by using a profile to exclude
+    //  the main datasource when running tests.
     @ServiceConnection
     static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest");
 

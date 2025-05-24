@@ -18,7 +18,8 @@ public class AccountConfiguration {
         this.datasourceConfig = postgresConfig;
     }
 
-    // When testing we want the TestContainers datasource to be auto-injected with @ServiceConnection
+    // When testing, we want the TestContainers datasource to be auto-injected with @ServiceConnection so make sure this
+    // configuration isn't loaded.
     @Profile("!test")
     @Bean
     public DataSource dataSource() {

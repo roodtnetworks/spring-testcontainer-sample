@@ -20,7 +20,7 @@ public class AccountRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
-    // Staying with plain JdbcTemplate instead of Hibernate. Makes the migration to R2JdbcTemplate easier.
+    // Staying with plain JdbcTemplate instead of Hibernate. Makes the migration to R2dbcTemplate easier.
     public AccountRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
